@@ -1,6 +1,6 @@
 # Retrograde Network Analyses
 - Hierarchy, centrality, and modularity analyses from mouse whole brain connectivity data and matrices.
-- Code used in "The input-output connectional organization of the cortical-thalamic-basal ganglia circuits and its molecular underpinnings", by Yao et al.
+- Code used in Yao et al (2024) "The input-output connectional organization of the cortical-thalamic-basal ganglia circuits and its molecular underpinnings".
 - If you have any questions or suggestions on the code, please contact Hannah Choi (hannahch@gatech.edu) or Eric M Li (eli303@gatech.edu).
 - Written 3/18/2024 by Eric M. Li and Hannah Choi.
 ---
