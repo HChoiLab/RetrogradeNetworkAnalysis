@@ -1,8 +1,8 @@
-# Mouse Brain Hierarchy
+# Retrograde Network Analyses
 - Hierarchy searching algorithm based on layer-projection patterns of cortico-cortical, thalamo-cortical, and cortico-thalamic connections constructed from viral tracing experiments using Cre-driver lines
-- Code used in
-- If you have any questions or suggestions on the code, please contact Hannah Choi (hannahc@alleninstitute.org)
-- Written 8/9/2019 by Hannah Choi. Updated 3/10/2024 by Eric M. Li.
+- Code used in "The input-output connectional organization of the cortical-thalamic-basal ganglia circuits and its molecular underpinnings", by Yao et al.
+- If you have any questions or suggestions on the code, please contact Hannah Choi (hannahch@gatech.edu) or Eric M Li (eli303@gatech.edu).
+- Written 3/18/2024 by Eric M. Li and Hannah Choi.
 ---
 This Python code builds the hierarchy of the mouse cortical and thalamic regions based on clustered layer-projection patterns by maximizing the self-consistency of the obtained hierarchy measured by global hierarchy score, followed by iterative corrections. The hierarchy is first constructed based on anterograde and retrograde cortico-cortical connections only, which can be updated by taking thalamo-cortical and cortico-thalamic connections into account.
 ## Level of Support
