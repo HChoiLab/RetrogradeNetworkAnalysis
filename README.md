@@ -7,8 +7,10 @@
 This Python code builds the hierarchy of the mouse cortical and thalamic regions based on clustered layer-projection patterns by maximizing the self-consistency of the obtained hierarchy measured by global hierarchy score, followed by iterative corrections. The hierarchy is first constructed based on anterograde and retrograde cortico-cortical connections only, which can be updated by taking thalamo-cortical and cortico-thalamic connections into account.
 ## Level of Support
 We are releasing this code to the public as a tool we expect others to use. Questions concerning bugs and related issues are welcomed. We expect to address them promptly, pull requests will vetted by our staff before inclusion.
-## Cortico-cortical hierarchy
-### `run_CC.py`
+
+## Hierarchy
+### Cortico-cortical hierarchy
+#### `run_CC.py`
 - The main hierarchy generating code based on anterograde and retrograde cortico-cortical connectivity data.
 - Calls:
 - - `func_unsupservised_CC_retro.py`
