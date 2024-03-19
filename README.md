@@ -54,12 +54,35 @@ To evaluate how hierarchical the mouse brain is, compare the global hierarchy sc
 To find hierarchies of different cortical modules or within each module, run `run_CC_module.py` and `run_TCCT_module.py` to obtain CC and CC+TCCT-based hierarchies. For inter/intra-module hierarchy, instead of searching for the optimal mapping based on the limited numbers of intra-module or inter-module connections every time, use the pre-generated mapping of clusters to either FF or FB direction constructed from all CC, TC, and CT connections, available in `clustermapping.xlsx`. In the paper, we show intra-module hierarchy for the visual module (module = 'Visual') as well as inter-module hierarchy (module ='inter_predefined').
 
 ## Centrality
-
+#### `centrality.py`
+- Centrality generating code using whole brain CCF-normalized connectivity matrices. Use this code to create correlation plots between centrality and hierarchy scores of brain areas, along with their corresponding Excel files.
+- Input files:
+- - `combined_ipsi_VN.xlsx`
+  - `ipsi_C57_antero_VN.xlsx`
+  - `retro_ipsi_VN.xlsx`
+- Output files:
+- - `antero_inward_centrality.xlsx`, which includes centrality and hierarchy scores for all areas in the hierarchy. Centrality scores are found using the anterograde connectivity matrix with "inward distance" as the measure of distance between two areas.
+  - `retro_outward_centrality.xlsx`, which uses the retrograde connectivity matrix and "outward distance" to compute centrality scores of all areas in the hierarchy.
+  - `averaged_centrality.xlsx`, which averages the two above centrality scores for each area.
 ## Modularity
-
+#### `modularity.py`
+- Modularity generating code using whole brain connectivity matrices. Use this code to create comparison plots of modularity scores between real and shuffled versions of the matrices, along with modules corresponding to a spatial resolution parameter.
+- Input files:
+- - `combined_ipsi.xlsx`
+  - `antero_ipsi.xlsx`
+  - `retro_ipsi.xlsx`
+- Output files:
+- - `retrograde modularity.svg`, which compares modularity scores between the retrograde connectivity matrix and a shuffled version, over varying values of a spatial resolution parameter (gamma).
 
 ## Figures and Results
-[@Eric, fix this]The summerized results of pre-generated hierarchy scores and global hierarchy scores are available in the `\Results` folder. You can use `figures.py` to produce summary figures based on the pre-generated results.
+[@Eric, fix this]The summarized results of pre-generated hierarchy scores and global hierarchy scores are available in the `\results` folder. You can use `figures.py` to produce summary figures based on the pre-generated results.
+#### `hierarchy_summary_antero_retro_CreConf.xlsx`
+- Contains hierarchy score of all areas at each step of hierarchy generation. Used to generate complete hierarchy plot of cortical areas (`CC iterated`) and all areas (`CC+TCCT iterated`).
+- Also contains intra-module and inter-module hierarchy scores, for each step of intra/inter-module hierarchy generation.
+
+#### `gh_comparison_antero_retro_shuffled_CreConf.xlsx`
+- Contains global hierarchy scores of shuffled data (x100) and real data for varying steps of hierarchy generation.
+- Uses `iter shuffled hg (cortex)`, `iter data hg (cortex)`, `iter shuffled hg (cortex+thal)`, and `iter data hg (cortex+thal)` for global hierarchy score comparison figure. 
 
 ## Terms of Use
 https://alleninstitute.org/legal/terms-use/
