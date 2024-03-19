@@ -119,7 +119,7 @@ ax.set_xlabel('gamma')
 ax.set_ylabel('modularity score')
 ax.set_title(name)
 ax.legend()
-fig.savefig(output_dir+name+".png", format="png")
+#fig.savefig(output_dir+name+".png", format="png")
 
 [[community], mod_score] = bct.modularity_louvain_dir(r, gamma=data_mod_scores[max_gamma][0], hierarchy=True)
 
