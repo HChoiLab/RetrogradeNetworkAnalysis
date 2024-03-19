@@ -125,7 +125,7 @@ def make_plot(centrality, name):
     plt.ylabel('hierarchy score')
     plt.title(name+', r='+str(np.corrcoef(centrality_values, hierarchy_values)[0, 1]))
     plt.show()
-    f.savefig(output_dir+name+".png", format="png")
+    #f.savefig(output_dir+name+".png", format="png")
     return centrality_areas, centrality_values, hierarchy_values
 
 def create_networkx(matrix, weight, in_out):
