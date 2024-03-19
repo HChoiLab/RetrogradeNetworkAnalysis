@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import logging
 import numpy as np
@@ -25,9 +23,6 @@ based on the cortico-cortical (CC) connectivity data.
 
 
 # # Set input and output directories 
-# 
-
-# In[ ]:
 
 
 CreConf = 1 # 1 if using CC hierarchy with Cre-confidence; 0 if not
@@ -37,9 +32,6 @@ output_dir = r'./Output/module/'      # Directory to save the outputs from the e
 
 
 # # Define the module. 
-# 
-
-# In[ ]:
 
 
 module = 'inter_predefined'
@@ -49,9 +41,6 @@ module = 'inter_predefined'
 
 
 # # Clusters of cortico-cortical source-line-target pairs
-# 
-
-# In[ ]:
 
 
 xls=pd.ExcelFile(input_dir+"AnteroRetro_CC_TC_CT_clusters.xlsx")
@@ -60,8 +49,6 @@ df = df[(df["Target Major Division"] == "isocortex")&(df["Source Major Division"
 
 
 # # Use modules found by retrograde analysis
-
-# In[ ]:
 
 
 df.loc[((df["source"] == "VISal")|(df["source"] == "VISl")|(df["source"] == "VISp")|(df["source"] == "VISpl")
@@ -107,9 +94,6 @@ elif CreConf == 0:
 
 
 # # For intra-module, select only the areas within the chosen module
-# 
-
-# In[ ]:
 
 
 if (module != 'inter') and (module != 'inter_predefined'):    
@@ -117,9 +101,6 @@ if (module != 'inter') and (module != 'inter_predefined'):
 
 
 # # If inter-module, change all the target & source area names to the module name
-# 
-
-# In[ ]:
 
 
 if (module == 'inter') or (module == 'inter_predefined'): 
@@ -128,10 +109,7 @@ if (module == 'inter') or (module == 'inter_predefined'):
         df.loc[df["Cortical Source Module"] == list_module[i_module],'source'] = list_module[i_module] 
 
 
-# # Trim the dataframe 
-# 
-
-# In[ ]:
+# # Trim the dataframe
 
 
 df_antero=df[(df.Antero_Retro == "A")] 
@@ -166,9 +144,6 @@ dfV_retro = dfV2[["source","target","creline","RetroCluster", "Antero_Retro"]].c
 
 
 # # If inter-module, we may want to find the mapping rule, that is not pre-defined
-# 
-
-# In[ ]:
 
 
 if module == 'inter':
@@ -211,9 +186,6 @@ if module == 'inter':
 
 
 # # Define functions needed. 
-# 
-
-# In[ ]:
 
 
 c0a=2**num_clu_antero
@@ -289,9 +261,6 @@ def hrcf (area):
 
 
 # # Produce an expanded data frame with Cre-confidence, FF/FB, hierarchy values as source & target for each pair of CC connections
-# 
-
-# In[ ]:
 
 
 dfV.loc[(dfV.Antero_Retro == "R"),"ffb_c"]=dfV[(dfV.Antero_Retro == "R")].RetroCluster.apply(ffb_c_retro)
@@ -307,10 +276,7 @@ dfV.loc[:,"hr_t"]=dfV["target"].apply(hrf)
 dfV.to_excel(output_dir+'inputexpanded_CC_'+module+'.xlsx')
 
 
-# # Find hierarchy scores of cortical areas within a module or of modules 
-# 
-
-# In[ ]:
+# # Find hierarchy scores of cortical areas within a module or of modules
 
 
 areas = np.intersect1d(source_areas, target_areas)
@@ -336,9 +302,6 @@ dfi.head()
 
 
 # # Iterate cortical hierarchy scores to refine the hierarchy levels
-# 
-
-# In[ ]:
 
 
 '''Iterations'''
@@ -403,8 +366,6 @@ hrc_iter.to_excel(output_dir+'CC_conf_iter_'+module+'.xlsx')
 
 
 # # Print out global hierarchy scores of the CC connectivity data before and after iteration
-
-# In[ ]:
 
 
 dfV_temp = dfV[['source','target','ffb_c','ffb_nc','conf']]

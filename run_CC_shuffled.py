@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import logging
 import numpy as np
@@ -25,17 +23,13 @@ computes the global hierarchy scores of the shuffled data.
 
 # # Set input and output directories
 
-# In[ ]:
-
 
 input_dir = r'./Input/'                     # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx"
-input_dir2 = r'./Output/'                   # Directory with the file "ghc_CC.xls"
+input_dir2 = r'./Output/'                   # Directory with the file "ghs_CC.xlsx"
 output_dir = r'./Output/shuffled/'          # Directory to save the ouputs from the shuffled experimental data
 
 
-# # Read the excel file with source-target-creline pairs and their cluster numbers. 
-
-# In[ ]:
+# # Read the excel file with source-target-creline pairs and their cluster numbers.
 
 
 xls=pd.ExcelFile(input_dir+"AnteroRetro_CC_TC_CT_clusters.xlsx")
@@ -67,8 +61,6 @@ dfV_retro = dfV2[["source","target","creline","RetroCluster", "Antero_Retro"]].c
 
 
 # # Find global hierarchy scores of shuffled CC connectivity data
-
-# In[ ]:
 
 
 n_iter = 10 # or 5, for fast process
@@ -303,8 +295,6 @@ pd.DataFrame(hrc_iter_shuffled).to_excel(output_dir +'CC_hg_iter_shuffled.xlsx')
 
 
 # # Plot global hierarchy scores of 100 shuffled data with the global hierarchy score of the original data
-
-# In[ ]:
 
 
 """Global hierarchy scores of the original cortico-cortical connectivity"""

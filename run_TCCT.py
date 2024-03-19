@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import logging
 import numpy as np
@@ -25,8 +23,6 @@ the cortico-cortical (CC) connectivity data.
 
 # # Set input and output directories
 
-# In[ ]:
-
 
 input_dir = r'./Input/'     # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx" 
 output_dir = r'./Output/'   # Directory to save the ouputs from the experimental data
@@ -36,9 +32,6 @@ CreConf = 1                 # 1 if using CC hierarchy with Cre-confidence; 0 if 
 
 
 # # Read the excel file with source-target-creline pairs and their cluster numbers. Use TC + CT connections.
-# 
-
-# In[ ]:
 
 
 xls=pd.ExcelFile(input_dir+"AnteroRetro_CC_TC_CT_clusters.xlsx")
@@ -72,8 +65,6 @@ dfVT = dfV.reset_index(drop=True)
 
 # # Map 5 clusters of CT connections to FF/FB directions by maximizing global hierarchy score
 
-# In[ ]:
-
 
 hierarchy_vals = fit_CT(dfV2)
 
@@ -96,9 +87,6 @@ print(results)
 
 
 # # Define functions needed
-# 
-
-# In[ ]:
 
 
 c0r = 2**num_retro_clu
@@ -144,9 +132,6 @@ def hrcf (area):
 
 
 # # Produce expanded data frame with  FF/FB, hierarchy values as source & target for each pair of TC + CT connections
-# 
-
-# In[ ]:
 
 
 dfVT.loc[(dfVT.Antero_Retro == "R"),"ffb_c"]=dfVT[(dfVT.Antero_Retro == "R")].RetroCluster.apply(ff_or_fb_retro_c)
@@ -165,8 +150,6 @@ dfVT.to_excel(output_dir+'inputexpanded_TCCT.xlsx')
 
 
 # # Find hierarchy score for each of thalamic areas
-
-# In[ ]:
 
 
 areas = dfV1["source"].unique()
@@ -191,9 +174,6 @@ dfiT.head()
 
 
 # # Iterate thalamic + cortical hierarchy scores
-# 
-
-# In[ ]:
 
 
 n_iter = 20
@@ -271,9 +251,6 @@ elif CreConf == 1:
 
 
 #  # Print out global hierarchy scores for the TC + CT connectivity data before and after iteration
-# 
-
-# In[ ]:
 
 
 dfi_TCCT = hr_iter[["CortexThalamus","areas",0,n_iter]]
@@ -339,4 +316,3 @@ newDF= pd.DataFrame([])
 newDF= pd.concat([newDF, pd.DataFrame({'hg_TCCT_init':hg_TCCT_init, 'hg_cortex_TCCT_iter':hg_cortex_TCCT_iter,
                                  'hg_TCCT_iter':hg_TCCT_iter},index=[0])])
 newDF.to_excel(output_dir+'ghs_TCCT.xlsx')
-

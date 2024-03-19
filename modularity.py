@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -22,8 +19,6 @@ matrices and compares their modularity scores to those of shuffled versions.
 
 # # Set input and output directories
 
-# In[ ]:
-
 
 input_dir = r'./Input/'
 output_dir = r'./Output/'
@@ -31,10 +26,8 @@ output_dir = r'./Output/'
 
 # # Read and preprocess excel file with connection matrices. Set all NaN values to zero and obtain cortical areas. Transpose retrograde and combined matrices.
 
-# In[ ]:
 
-
-xls1=pd.ExcelFile(input_dir+"combined_ipsi_October3.xlsx")
+xls1=pd.ExcelFile(input_dir+"combined_ipsi.xlsx")
 
 df1=pd.read_excel(xls1,'in')
 df1 = df1.set_index("target")
@@ -81,8 +74,6 @@ r = np.transpose(r)
 
 # # Create shuffled version of cortical connection matrices
 
-# In[ ]:
-
 
 matrix_cortical_shuffled = matrix_cortical.sample(frac=1).reset_index(drop=True)
 matrix_cortical_shuffled = matrix_cortical_shuffled.sample(frac=1, axis=1).reset_index(drop=True)
@@ -101,8 +92,6 @@ r_shuffled = np.transpose(r_shuffled)
 
 
 # # Obtain communities using Louvain Algorithm and compare to shuffled matrices.
-
-# In[ ]:
 
 
 name = 'retrograde modularity'
@@ -130,7 +119,7 @@ ax.set_xlabel('gamma')
 ax.set_ylabel('modularity score')
 ax.set_title(name)
 ax.legend()
-#fig.savefig(output_dir+name+".svg", format="svg")
+fig.savefig(output_dir+name+".png", format="png")
 
 [[community], mod_score] = bct.modularity_louvain_dir(r, gamma=data_mod_scores[max_gamma][0], hierarchy=True)
 
@@ -144,4 +133,3 @@ for i in range(len(cortical_areas)):
     list_communities[community_number-1].append(cortical_areas[i])
 for module in list_communities:
     print(module)
-

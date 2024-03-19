@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import logging
 import numpy as np
@@ -24,10 +22,7 @@ based on TC and CT connectivity data.
 """
 
 
-# # Set input and output directories 
-# 
-
-# In[ ]:
+# # Set input and output directories
 
 
 CreConf = 1                    # 1 if using CC hierarchy with Cre-confidence; 0 if not
@@ -36,22 +31,16 @@ input_dir = r'./Input/'        # Directory with the file "AnteroRetro_CC_TC_CT_c
 output_dir = r'./Output/module/'      # Directory to save the ouputs from the experimental data
 
 
-# # Define the module. 
-# 
-
-# In[ ]:
+# # Define the module.
 
 
-module = 'Visual'
+module = 'inter_predefined'
 
 # In the paper, we used the following: 'Visual' & 'inter_predefined'
 # Possible modules: 'Visual', 'Medial', 'Auditory', 'Somatomotor', 'PFC', 'inter_predefined', 'inter'
 
 
 # # Clusters of TC and CT source-line-target pairs
-# 
-
-# In[ ]:
 
 
 xls=pd.ExcelFile(input_dir+"AnteroRetro_CC_TC_CT_clusters.xlsx")
@@ -63,8 +52,6 @@ df = df[((df["Target Major Division"] == "isocortex")&(df["Source Major Division
 
 
 # # Use modules found by retrograde analysis
-
-# In[ ]:
 
 
 df.loc[((df["source"] == "GU")|(df["source"] == "VISC")|(df["source"] == "SSs")|(df["source"] == "SSp-bfd")
@@ -107,9 +94,6 @@ clu_ffb = clu_ffb.rename(columns={'CT': 'ffb_CT'})
 
 
 # # For intra-medial, select only the areas within the chosen module
-# 
-
-# In[ ]:
 
 
 if (module != 'inter') and (module != 'inter_predefined'):
@@ -117,9 +101,6 @@ if (module != 'inter') and (module != 'inter_predefined'):
 
 
 # # If inter-module, change all the target & source area names to the module name
-# 
-
-# In[ ]:
 
 
 if (module == 'inter') or (module == 'inter_predefined'): 
@@ -128,10 +109,7 @@ if (module == 'inter') or (module == 'inter_predefined'):
         df.loc[df["Cortical Source Module"] == list_module[i_module],'source'] = list_module[i_module] 
 
 
-# # Trim the dataframe 
-# 
-
-# In[ ]:
+# # Trim the dataframe
 
 
 df_antero=df[(df.Antero_Retro == "A")] 
@@ -162,9 +140,6 @@ dfVT = dfV.reset_index(drop=True)
 
 
 # # If inter-module, we may want to find the mapping rule, that is not pre-defined.
-# 
-
-# In[ ]:
 
 
 if module == 'inter':
@@ -208,9 +183,6 @@ if module == 'inter':
 
 
 # # Define functions needed.
-# 
-
-# In[ ]:
 
 
 c0r = 2**(num_retro_clu)
@@ -265,9 +237,6 @@ def hrcf (area):
 
 
 # # Produce expanded data frame with  FF/FB, hierarchy values as source & target for each pair of TC/CT connections
-# 
-
-# In[ ]:
 
 
 '''ATTENTION! Use the confidence-weighted (biased) mapping of the TC+CT clusters ("ffb_c" & "hrc_s/hrc_t");
@@ -289,9 +258,6 @@ dfVT.to_excel(output_dir+'inputexpanded_TCCT_'+module+'.xlsx')
 
 
 # # Find hierarchy scores of thalamic areas within a module or of modules
-# 
-
-# In[ ]:
 
 
 areas = dfV1["source"].unique()
@@ -318,9 +284,6 @@ dfiT.head()
 
 
 # # Iterate thalamic + cortical hierarchy scores
-# 
-
-# In[ ]:
 
 
 n_iter = 20
@@ -383,7 +346,7 @@ for i_area in range(0,n_area):
         hr_iter.loc[i_area,'CortexThalamus'] = 'T'
 
 hr_iter = hr_iter[['areas','CortexThalamus', 0,n_iter] ]  
-hr_iter_save = hr_iter #hr_iter[(hr_iter.CortexThalamus=='C')]
+hr_iter_save = hr_iter
 
 if CreConf == 1:
     hr_iter_save.to_excel(output_dir+'TCCT_CCconf_iter_'+module+'.xlsx')
@@ -392,9 +355,6 @@ elif CreConf == 0:
 
 
 #  # Print out global hierarchy scores of CC + TCCT connectivity data before and after iteration
-# 
-
-# In[ ]:
 
 
 dfi_TCCT = hr_iter[["CortexThalamus","areas",0,n_iter]]
@@ -460,4 +420,3 @@ newDF= pd.DataFrame([])
 newDF=pd.concat([newDF, pd.DataFrame({'hg_TCCT_init':hg_TCCT_init,
                                  'hg_cortex_TCCT_iter':hg_cortex_TCCT_iter, 'hg_TCCT_iter':hg_TCCT_iter},index=[0])])
 newDF.to_excel(output_dir+'ghs_TCCT_'+module+'.xlsx')
-

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import logging
 import numpy as np
@@ -21,8 +19,6 @@ This code takes previously generated hierarchy scores & global hierarchy score d
 
 # # Import results
 
-# In[ ]:
-
 
 input_dir = r'./results/' 
 output_dir = r'./Output/'
@@ -31,8 +27,6 @@ xls2=pd.ExcelFile(input_dir+"gh_comparison_antero_retro_shuffled_CreConf.xlsx")
 
 
 # # Hierarchy of all cortical & thalamic regions
-
-# In[ ]:
 
 
 df=pd.read_excel(xls1)
@@ -61,13 +55,11 @@ plt.yticks(areas_vec, areas)
 plt.title('CC+TCCT hierarchy')
 f.set_size_inches(6, 10.5)
 plt.legend(loc='lower right')
-#f.savefig(output_dir+"hierarchy.svg", format="svg")
+#f.savefig(output_dir+"hierarchy.png", format="png")
 plt.show() 
 
 
 # # Intra-module hierarchy of visual module
-
-# In[ ]:
 
 
 df=pd.read_excel(xls1,'hierarchy_visual')
@@ -85,13 +77,11 @@ plt.xlim(-1.1,1)
 plt.yticks(areas_vec, areas)
 plt.title('Visual module hierarchy')
 f.set_size_inches(4, 6)
-#f.savefig(output_dir+"visual.svg", format="svg")
+#f.savefig(output_dir+"visual.png", format="png")
 plt.show()
 
 
 # # Inter-module cortical hierarchy
-
-# In[ ]:
 
 
 ''' Inter-module cortical hierarchy'''
@@ -111,13 +101,11 @@ plt.xlim(-1.1,1)
 plt.yticks(areas_vec, areas)
 plt.title('Inter-module hierarchy')
 f.set_size_inches(4, 6)
-#f.savefig(output_dir+"inter-module.svg", format="svg")
+#f.savefig(output_dir+"inter-module.png", format="png")
 plt.show()
 
 
 # # Global hierarchy scores: comparison to shuffled data
-
-# In[ ]:
 
 
 df_CC = pd.read_excel(xls2,'CC')
@@ -139,5 +127,5 @@ ax.set_xlabel('global hierarchy score (antero + retro)',fontsize=16)
 ax.set_ylabel('counts',fontsize=16)
 ax.set_title('z-score(CC)={:.2f}, z-score(CC+TCCT)={:.2f}'.format(zscore_CC, zscore_TCCT))
 ax.legend(loc='upper right')
-#fig.savefig(output_dir+"shuffled.svg", format="svg")
+#fig.savefig(output_dir+"shuffled.png", format="png")
 

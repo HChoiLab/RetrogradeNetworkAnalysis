@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
 
 import logging
 import numpy as np
@@ -25,16 +23,12 @@ and retrograde mouse brain connections.
 
 # # Set input and output directories
 
-# In[ ]:
-
 
 input_dir = r'./Input/'        # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx"
 output_dir = r'./Output/'      # Directory to save the ouputs from the experimental data
 
 
 # # Read the excel file with source-target-creline pairs and their cluster numbers. Use only the CC connections.
-
-# In[ ]:
 
 
 xls=pd.ExcelFile(input_dir+"AnteroRetro_CC_TC_CT_clusters.xlsx")
@@ -69,8 +63,6 @@ dfV = dfV.reset_index(drop=True)
 
 # # Map 11 clusters of retrograde CC connections to FF/FB directions by maximizing the global hierarchy score
 
-# In[ ]:
-
 
 hierarchy_vals = fit_retro(dfV2)
 
@@ -93,8 +85,6 @@ print(results)
 
 
 # # Define functions needed
-
-# In[ ]:
 
 
 c0r = 2**num_retro_clu
@@ -139,8 +129,6 @@ def hrcf (area):
 
 # # Produce expanded data frame with FF/FB hierarchy values as source & target for each pair of CC connections
 
-# In[ ]:
-
 
 dfV.loc[(dfV.Antero_Retro == "R"),"ffb_c"]=dfV[(dfV.Antero_Retro == "R")].RetroCluster.apply(ff_or_fb_retro_c)
 dfV.loc[(dfV.Antero_Retro == "R"),"ffb_nc"]=dfV[(dfV.Antero_Retro == "R")].RetroCluster.apply(ff_or_fb_retro_nc)
@@ -156,8 +144,6 @@ dfV.to_excel(output_dir+'inputexpanded_CC.xlsx')
 
 
 # # Find hierarchy score for each of cortical areas
-
-# In[ ]:
 
 
 source_areas = dfV1["source"].unique()
@@ -186,8 +172,6 @@ dfi.to_excel(output_dir+'initialhierarchy_CC.xlsx')
 
 
 # # Iterate cortical hierarchy scores
-
-# In[ ]:
 
 
 """ Iterations """
@@ -256,8 +240,6 @@ hr_iter.to_excel(output_dir+'CC_noconf_iter.xlsx') # Save before & after iterati
 
 
 # # Print out global hierarchy scores for the CC connectivity data before and after iteration
-
-# In[ ]:
 
 
 dfV_temp = dfV[['source','target','ffb_c','ffb_nc','conf']]
