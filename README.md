@@ -52,25 +52,22 @@ To find hierarchies within each cortical module or a hierarchy of cortical modul
 
 ## Centrality
 #### `centrality.py`
-- Centrality generating code using whole brain CCF-normalized connectivity matrices. Use this code to create correlation plots between centrality and hierarchy scores of brain areas, along with their corresponding Excel files.
+- Centrality analysis code using whole brain CCF-normalized connectivity matrices. Use this code to create correlation plots between closeness centrality and hierarchy scores of brain areas, along with their corresponding Excel files.
 - Input files:
 - - `combined_ipsi_VN.xlsx`
   - `antero_ipsi_VN.xlsx`
   - `retro_ipsi_VN.xlsx`
 - Output files:
-- - `antero_inward_centrality.xlsx` includes centrality and hierarchy scores for all areas in the hierarchy. Centrality scores are found using the anterograde connectivity matrix with "inward distance" as the measure of distance between two areas. `antero_inward_centrality.png` is the plot corresponding to this Excel file.
-  - `retro_outward_centrality.xlsx` uses the retrograde connectivity matrix and "outward distance" to compute centrality scores of all areas in the hierarchy. `retro_outward_centrality.png` is its corresponding correlation plot.
-  - `averaged_centrality.xlsx` averages the two above centrality scores for each area, and is visualized in `averaged_centrality.png`. This averaged centrality was used for our centrality analysis in this paper.
+- - `antero_inward_centrality.xlsx` includes centrality and hierarchy scores for all areas in the hierarchy. Centrality scores are found using the anterograde connectivity matrix with "inward distance" as the measure of distance between two areas.
+  - `retro_outward_centrality.xlsx` uses the retrograde connectivity matrix and "outward distance" to compute centrality scores of all areas in the hierarchy.
+  - `averaged_centrality.xlsx` averages the two above centrality scores for each area. This averaged centrality was used for our centrality analysis in this paper.
 ## Modularity
 #### `modularity.py`
-- Modularity generating code using whole brain connectivity matrices. Use this code to create comparison plots of modularity scores between real and shuffled versions of the matrices, along with modules corresponding to a spatial resolution parameter.
+- Modularity analysis code using whole mouse brain connectivity matrices. Use this code to find cortical modules within the mouse brain at a specified spatial resolution parameter, and create comparison plots of modularity scores between real and shuffled versions of the matrices over this parameter. In the paper, the retrograde connectivity matrix was used. 
 - Input files:
 - - `combined_ipsi.xlsx`
   - `antero_ipsi.xlsx`
   - `retro_ipsi.xlsx`
-- Output files:
-- - `retrograde modularity.png` compares modularity scores between the retrograde connectivity matrix and a shuffled version, over varying values of a spatial resolution parameter (gamma). The retrograde connectivity matrix was used in our modularity analysis for this paper.
-
 ## Figures and Results
 The summarized results of area hierarchy scores and global hierarchy scores are in the `\results` folder. You can use `figures.py` to produce hierarchy summary figures based on the pre-generated results. Modularity figures comparing real and shuffled connectivity matrices are generated in `modularity.py`, while correlation plots between closeness centrality and hierarchy values can be generated in `centrality.py`.
 #### `hierarchy_summary_antero_retro_CreConf.xlsx`
