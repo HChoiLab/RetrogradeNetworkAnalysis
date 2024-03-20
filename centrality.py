@@ -23,7 +23,7 @@ correlation plots with hierarchy scores.
 
 input_dir = r'./Input/'
 output_dir = r'./Output/'
-results_dir = r'./Results/'
+results_dir = r'./results/'
 
 
 # # Obtain hierarchy results
