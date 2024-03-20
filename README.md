@@ -1,12 +1,12 @@
 # Retrograde Network Analyses
 - Hierarchy, centrality, and modularity analyses from mouse whole brain connectivity data and matrices.
 - Code used in Yao et al (2024) "The input-output connectional organization of the cortical-thalamic-basal ganglia circuits and its molecular underpinnings".
-- If you have any questions or suggestions on the code, please contact Hannah Choi (hannahch@gatech.edu) or Eric M Li (eli303@gatech.edu).
+- If you have any questions or suggestions on the code, please contact Hannah Choi (hannahch@gatech.edu) or Eric M. Li (eli303@gatech.edu).
 - Written 3/18/2024 by Eric M. Li and Hannah Choi.
 ---
-This Python code performs network analyses of the mouse whole brain connecitivity constructed based on both anterograde and retrograde Cre-driver line viral tracing experiments. Specifically, this code computes three properties of the mouse whole brain network: hierarchy, centrality, and modularity. The code in the folder "Hierarchy" creates a hierarchy of the mouse cortical and thalamic regions by assigning clustered layer-projection patterns to either feedforward or feedback and maximizing a self-consistency global hierarchy score. The hierarchy uses both anterograde and retrograde Cre-driver line viral tracing experiments, beginning with cortico-cortical connections, followed by cortico-thalamic and thalamo-cortical connections. 
-Using mouse whole brain connectivity matrices, the code "centrality.py" computes closeness centrality scores of the regions. We then create correlation plots between hierarchy and closeness centrality score. 
-Finally, the code "modularity.py" creates modules of the mouse cortical brain using the Louvain algorithm by maximizing a "modularity metric", and compares the modularity of the mouse brain to a shuffled version of the mouse connectivity matrix.
+This Python code performs network analyses of the mouse whole brain connecitivity constructed based on both anterograde and retrograde Cre-driver line viral tracing experiments. Specifically, this code computes three properties of the mouse whole brain network: hierarchy, centrality, and modularity. The code in the folder `Hierarchy` creates a hierarchy of the mouse cortical and thalamic regions by assigning clustered layer-projection patterns to either feedforward or feedback and maximizing a self-consistency global hierarchy score. The hierarchy uses both anterograde and retrograde Cre-driver line viral tracing experiments, beginning with cortico-cortical connections, followed by cortico-thalamic and thalamo-cortical connections. 
+Using mouse whole brain connectivity matrices, the code `centrality.py` computes closeness centrality scores of the regions. We then create correlation plots between hierarchy and closeness centrality score. 
+Finally, the code `modularity.py` creates modules of the mouse cortical brain using the Louvain algorithm by maximizing a "modularity metric", and compares the modularity of the mouse brain to a shuffled version of the mouse connectivity matrix.
 
 ## Level of Support
 We are making this code available to the public as a helpful tool and guide. We welcome questions concerning bugs and related issues, and expect to address them promptly.
