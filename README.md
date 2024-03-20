@@ -67,7 +67,8 @@ To find hierarchies within each cortical module or a hierarchy of cortical modul
   - `averaged_centrality.xlsx` averages the two above centrality scores for each area. This averaged centrality was used for our centrality analysis in this paper.
 ## Modularity
 #### `modularity.py`
-- Modularity analysis code using whole mouse brain connectivity matrices. Use this code to find cortical modules within the mouse brain at a specified spatial resolution parameter, and create comparison plots of modularity scores between real and shuffled versions of the matrices over this parameter. In the paper, the retrograde connectivity matrix was used. 
+- Modularity analysis code using whole mouse brain connectivity matrice, based on Brain Connectivity Toolbox (https://sites.google.com/site/bctnet/)
+- Use this code to find cortical modules within the mouse brain at a specified spatial resolution parameter, and create comparison plots of modularity scores between real and shuffled versions of the matrices over this parameter. In the paper, the retrograde connectivity matrix was used. 
 - Input files:
 - - `combined_ipsi.xlsx`
   - `antero_ipsi.xlsx`
