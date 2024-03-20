@@ -55,7 +55,8 @@ To find hierarchies within each cortical module or a hierarchy of cortical modul
 
 ## Centrality
 #### `centrality.py`
-- Centrality analysis code using whole brain CCF-normalized connectivity matrices. Use this code to create correlation plots between closeness centrality and hierarchy scores of brain areas, along with their corresponding Excel files.
+- Centrality analysis code using whole brain CCF-normalized connectivity matrices
+- Use this code to create correlation plots between closeness centrality and hierarchy scores of brain areas, along with their corresponding Excel files.
 - Input files:
 - - `combined_ipsi_VN.xlsx`
   - `antero_ipsi_VN.xlsx`
