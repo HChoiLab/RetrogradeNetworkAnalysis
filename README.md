@@ -2,9 +2,9 @@
 - Hierarchy, centrality, and modularity analyses from mouse whole brain connectivity data and matrices.
 - Code used in Yao et al (2024) "The input-output connectional organization of the cortical-thalamic-basal ganglia circuits and its molecular underpinnings".
 - If you have any questions or suggestions on the code, please contact Hannah Choi (hannahch@gatech.edu) or Eric M. Li (eli303@gatech.edu).
-- Written 3/18/2024 by Eric M. Li and Hannah Choi.
+- Written 3/19/2024 by Eric M. Li and Hannah Choi.
 ---
-This Python code performs network analyses of the mouse whole brain connecitivity constructed based on both anterograde and retrograde Cre-driver line viral tracing experiments. Specifically, this code computes three properties of the mouse whole brain network: hierarchy, centrality, and modularity. The code in the folder `Hierarchy` creates a hierarchy of the mouse cortical and thalamic regions by assigning clustered layer-projection patterns to either feedforward or feedback and maximizing a self-consistency global hierarchy score. The hierarchy uses both anterograde and retrograde Cre-driver line viral tracing experiments, beginning with cortico-cortical connections, followed by cortico-thalamic and thalamo-cortical connections. 
+This Python code performs network analyses of the mouse whole brain connectivity constructed based on both anterograde and retrograde Cre-driver line viral tracing experiments. Specifically, this code computes three properties of the mouse whole brain network: hierarchy, centrality, and modularity. The code in the folder `Hierarchy` creates a hierarchy of the mouse cortical and thalamic regions by assigning clustered layer-projection patterns to either feedforward or feedback and maximizing a self-consistency global hierarchy score. The hierarchy uses both anterograde and retrograde Cre-driver line viral tracing experiments, beginning with cortico-cortical connections, followed by cortico-thalamic and thalamo-cortical connections. 
 Using mouse whole brain connectivity matrices, the code `centrality.py` computes closeness centrality scores of the regions. We then create correlation plots between hierarchy and closeness centrality score. 
 Finally, the code `modularity.py` creates modules of the mouse cortical brain using the Louvain algorithm by maximizing a "modularity metric", and compares the modularity of the mouse brain to a shuffled version of the mouse connectivity matrix.
 
@@ -49,7 +49,7 @@ The CC hierarchy can be updated by including TC (anterograde) and CT (retrograde
 #### `IterativeMethod.py`
 - Import `iterativeTCCT` to iterate hierarchy scores of all cortical & thalamic regions.
 ### Comparison to shuffled connectivity data
-To determine how hierarchical the mouse brain is, evaluate the lower bound of the global hierarchy score by using a shuffled connectivity dataset. To do this, use `run_CC_shuffled.py` (with `func_unsupervised_CC_antero.py` and `func_unsupervised_CC_retro.py`) and `run_TCCT_shuffled.py` (with `func_unsupervised_TC_shuffled.py` and `func_unsupervised_CT_shuffled.py`). When incorporating thalamic areas into our shuffled hierarchy, there is a multiplier that necessitates most of the TC+CT connections are either FF or FB. Otherwise, we would end up with a hierarchy with all thalamic areas on the top or the bottom, rather than these areas being spread across the hierarchy.
+To determine how hierarchical the mouse brain is, evaluate the lower bound of the global hierarchy score by using a shuffled connectivity dataset. To do this, use `run_CC_shuffled.py` (with `func_unsupervised_CC_antero.py` and `func_unsupervised_CC_retro.py`) and `run_TCCT_shuffled.py` (with `func_unsupervised_TC_shuffled.py` and `func_unsupervised_CT_shuffled.py`). When incorporating thalamic areas into our shuffled hierarchy, there is an additional multiplier that necessitates TC and CT connections have similar FF/FB distributions. Otherwise, we would end up with a hierarchy with all thalamic areas on the top or the bottom, rather than these areas being spread across the hierarchy.
 ### Inter-module and intra-module hierarchy
 To find hierarchies within each cortical module or a hierarchy of cortical modules themselves, run `run_CC_module.py` and `run_TCCT_module.py` to obtain CC and CC+TCCT-based hierarchies. For these hierarchies, instead of searching for the optimal mapping of FF/FB using a very limited dataset of intra-module or inter-module connections, use the pre-generated mapping of clusters found from our hierarchy of all CC, TC, and CT connections, available in `clustermapping.xlsx`. In this paper, we show the inter-module hierarchy (module ='inter_predefined').
 
@@ -67,7 +67,7 @@ To find hierarchies within each cortical module or a hierarchy of cortical modul
   - `averaged_centrality.xlsx` averages the two above centrality scores for each area. This averaged centrality was used for our centrality analysis in this paper.
 ## Modularity
 #### `modularity.py`
-- Modularity analysis code using whole mouse brain connectivity matrice, based on Brain Connectivity Toolbox (https://sites.google.com/site/bctnet/)
+- Modularity analysis code using whole mouse brain connectivity matrices, based on Brain Connectivity Toolbox (https://sites.google.com/site/bctnet/)
 - Use this code to find cortical modules within the mouse brain at a specified spatial resolution parameter, and create comparison plots of modularity scores between real and shuffled versions of the matrices over this parameter. In the paper, the retrograde connectivity matrix was used. 
 - Input files:
 - - `combined_ipsi.xlsx`
