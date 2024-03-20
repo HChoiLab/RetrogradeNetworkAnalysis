@@ -24,9 +24,9 @@ computes the global hierarchy scores of the shuffled data.
 # # Set input and output directories
 
 
-input_dir = r'./Input/'        # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx"
-input_dir2 = r'./Output/'               # Directory with the file "ghs_TCCT.xlsx"
-output_dir = r'./Output/shuffled/'   # Directory to save the ouputs from the shuffled experimental data
+input_dir = r'../Input/'        # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx"
+input_dir2 = r'../Output/'               # Directory with the file "ghs_TCCT.xlsx"
+output_dir = r'../Output/shuffled/'   # Directory to save the ouputs from the shuffled experimental data
 
 ''' ATTENTION! Change the "df_cortex" accordingly in func_unsupervised_TC_shuffled
 and func_unsupervised_CT_shuffled as well! '''

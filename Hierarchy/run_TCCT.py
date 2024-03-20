@@ -24,8 +24,8 @@ the cortico-cortical (CC) connectivity data.
 # # Set input and output directories
 
 
-input_dir = r'./Input/'     # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx" 
-output_dir = r'./Output/'   # Directory to save the ouputs from the experimental data
+input_dir = r'../Input/'     # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx" 
+output_dir = r'../Output/'   # Directory to save the ouputs from the experimental data
 
 ''' ATTENTION! Change the "df_cortex" accordingly in func_unsupervised_CT as well! '''
 CreConf = 1                 # 1 if using CC hierarchy with Cre-confidence; 0 if not

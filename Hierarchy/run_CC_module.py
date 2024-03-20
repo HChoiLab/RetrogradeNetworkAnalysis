@@ -27,8 +27,8 @@ based on the cortico-cortical (CC) connectivity data.
 
 CreConf = 1 # 1 if using CC hierarchy with Cre-confidence; 0 if not
 
-input_dir = r'./Input/'        # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx" & "clustermapping.xlsx"
-output_dir = r'./Output/module/'      # Directory to save the outputs from the experimental data
+input_dir = r'../Input/'        # Directory with the file "AnteroRetro_CC_TC_CT_clusters.xlsx" & "clustermapping.xlsx"
+output_dir = r'../Output/module/'      # Directory to save the outputs from the experimental data
 
 
 # # Define the module. 

@@ -20,7 +20,7 @@ This code takes previously generated hierarchy scores & global hierarchy score d
 # # Import results
 
 
-input_dir = r'./results/' 
+input_dir = r'./Results/' 
 output_dir = r'./Output/'
 xls1=pd.ExcelFile(input_dir+"hierarchy_summary_antero_retro_CreConf.xlsx")
 xls2=pd.ExcelFile(input_dir+"gh_comparison_antero_retro_shuffled_CreConf.xlsx")
