@@ -21,7 +21,7 @@ This code takes previously generated hierarchy scores & global hierarchy score d
 
 input_dir = r'./results/' 
 output_dir = r'./Output/'
-xls1=pd.ExcelFile(input_dir+"hierarchy_summary.xlsx")
+xls1=pd.ExcelFile(input_dir+"hierarchy_summary_CreConf.xlsx")
 xls2=pd.ExcelFile(input_dir+"gh_comparison_shuffled_CreConf.xlsx")
 
 # # Hierarchy of all cortical + thalamic + basal ganglia regions
