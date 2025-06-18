@@ -47,8 +47,8 @@ def assign_hierarchy_levels(df, j):
 
     ##################################################################
     '''Change the file name accordingly'''
-    df_cortex=pd.read_excel(r'./Output/CC_conf_iter.xlsx') 
-    # df_cortex=pd.read_excel(r'./Output/CC_noconf_iter.xls') 
+    df_cortex=pd.read_excel(r'../Output/CC_conf_iter.xlsx') 
+    # df_cortex=pd.read_excel(r'../Output/CC_noconf_iter.xls') 
     ##################################################################
     
     df = df.join(df_cortex.set_index('areas'), on='source')    
